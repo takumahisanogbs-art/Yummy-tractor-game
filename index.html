@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YUMMY Tractors Adventure</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Title Screen -->
+    <section id="title-screen" class="screen active">
+
+        <div class="title-container">
+
+            <header class="title-hero">
+                <div class="title-badge" aria-hidden="true">
+                    <span class="title-badge-leaf">●</span>
+                    <span>SEASONAL FOOD ADVENTURE</span>
+                    <span class="title-badge-leaf">●</span>
+                </div>
+
+                <h1>
+                    <span class="title-yummy">YUMMY</span>
+                    <span class="title-adventure">Tractors Adventure</span>
+                </h1>
+
+                <p class="subtitle">
+                    Follow the seasons. Discover where food comes from.
+                </p>
+            </header>
+
+            <div class="season-heading">
+                <span class="season-heading-line"></span>
+                <p class="instruction">Choose your season</p>
+                <span class="season-heading-line"></span>
+            </div>
+
+
+            <div class="tractor-selection">
+
+                <div class="tractor-card" data-season="spring" role="button" tabindex="0" aria-pressed="false">
+                    <span class="season-number">01</span>
+                    <div class="tractor-image">
+
+    <img 
+    src="assets/tractors/spring-select.png"
+    alt="Spring Tractor">
+
+</div>
+                    <div class="tractor-name red">Robbie</div>
+                    <div class="season-card-copy">
+                        <h2>Spring</h2>
+                        <p>Fresh &amp; blooming</p>
+                    </div>
+                    <span class="season-check" aria-hidden="true">✓</span>
+                </div>
+
+
+                <div class="tractor-card" data-season="summer" role="button" tabindex="0" aria-pressed="false">
+                  <span class="season-number">02</span>
+                  <div class="tractor-image">
+
+    <img 
+    src="assets/tractors/summer-select.png"
+    alt="Summer Tractor">
+
+</div>
+                    <div class="tractor-name blue">Brian</div>                    
+                    <div class="season-card-copy">
+                        <h2>Summer</h2>
+                        <p>Bright &amp; sunny</p>
+                    </div>
+                    <span class="season-check" aria-hidden="true">✓</span>
+                </div>
+
+
+                <div class="tractor-card" data-season="autumn" role="button" tabindex="0" aria-pressed="false">
+                    <span class="season-number">03</span>
+                    <div class="tractor-image">
+
+    <img 
+    src="assets/tractors/autumn-select.png"
+    alt="Autumn Tractor">
+
+</div>
+                    <div class="tractor-name yellow">Yanko</div>                    
+                    <div class="season-card-copy">
+                        <h2>Autumn</h2>
+                        <p>Warm &amp; abundant</p>
+                    </div>
+                    <span class="season-check" aria-hidden="true">✓</span>
+                </div>
+
+
+                <div class="tractor-card" data-season="winter" role="button" tabindex="0" aria-pressed="false">
+                   <span class="season-number">04</span>
+                   <div class="tractor-image">
+
+    <img 
+    src="assets/tractors/winter-select.png"
+    alt="Winter Tractor">
+
+</div>
+                    <div class="tractor-name green">Graham</div>
+                    <div class="season-card-copy">
+                        <h2>Winter</h2>
+                        <p>Crisp &amp; hearty</p>
+                    </div>
+                    <span class="season-check" aria-hidden="true">✓</span>
+                </div>
+
+            </div>
+
+
+            <button id="start-button" disabled>
+                CHOOSE A SEASON
+            </button>
+
+            <p class="title-footnote">Five questions · Twelve stages · One tasty journey</p>
+
+        </div>
+
+        <footer
+            id="title-copyright"
+            class="title-copyright"
+            style="display:block !important; position:fixed !important; right:32px !important; bottom:28px !important; left:auto !important; z-index:99999 !important; visibility:visible !important; opacity:1 !important;"
+        >
+            <span class="title-copyright-line" aria-hidden="true"></span>
+            <p>© 2022–<span id="copyright-year">2026</span> BeSeedsensational. All rights reserved.</p>
+        </footer>
+
+    </section>
+
+    <div id="difficulty-modal" class="difficulty-modal" role="dialog" aria-modal="true" aria-labelledby="difficulty-title" hidden>
+        <div class="difficulty-backdrop" data-close-difficulty="true"></div>
+        <div class="difficulty-panel">
+            <button id="difficulty-close" class="difficulty-close" type="button" aria-label="Close difficulty selection">×</button>
+            <p class="difficulty-eyebrow">CHOOSE YOUR CHALLENGE</p>
+            <h2 id="difficulty-title">How tricky should it be?</h2>
+            <p id="difficulty-season-label" class="difficulty-season-label"></p>
+            <div class="difficulty-options">
+                <button class="difficulty-option easy" type="button" data-difficulty="easy">
+                    <span class="difficulty-level">EASY</span>
+                    <span class="difficulty-age">Familiar foods</span>
+                    <span class="difficulty-copy">A gentle start for young explorers</span>
+                </button>
+                <button class="difficulty-option medium" type="button" data-difficulty="medium">
+                    <span class="difficulty-level">MEDIUM</span>
+                    <span class="difficulty-age">A little trickier</span>
+                    <span class="difficulty-copy">For growing food detectives</span>
+                </button>
+                <button class="difficulty-option hard" type="button" data-difficulty="hard">
+                    <span class="difficulty-level">HARD</span>
+                    <span class="difficulty-age">Food expert</span>
+                    <span class="difficulty-copy">Rare foods and tougher choices</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Game Screen -->
+    <section id="game-screen" class="screen">
+
+
+        <div id="game-area">
+
+            <button id="back-to-menu-button" type="button">MAIN MENU</button>
+
+<!-- Timer -->
+
+<div id="timer">
+    Time: 0s
+</div>
+
+
+            <!-- Farm road -->
+            <div class="farm-road">
+
+                <div class="grass left"></div>
+
+                <div class="road"></div>
+
+                <div class="grass right"></div>
+
+
+                <!-- Dust clouds rising behind the tractor's rear wheels -->
+                <div class="tractor-dust" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+
+
+                <!-- Moving tractor -->
+                <img 
+    id="tractor"
+    src="assets/tractors/spring-drive.png"
+    alt="tractor">
+
+            </div>
+
+
+            <!-- YUMMIE -->
+            <div id="yummie">
+
+                 <img 
+    src="assets/yummie.png"
+    alt="YUMMIE"
+    class="yummie-image">
+
+
+                <div id="yummie-message">
+                    Need more help? I have a big hint!
+                </div>
+
+                <button id="hint-button">
+                    BIG HINT
+                </button>
+
+            </div>
+
+
+
+            <!-- Question Box -->
+            <div id="quiz-box">
+
+                <div id="question-progress" aria-label="Question progress">
+                    <span id="question-progress-label">QUESTION 1 / 5</span>
+                    <div id="question-progress-dots" aria-hidden="true"></div>
+                </div>
+
+                <div id="game-intro" aria-live="polite">
+                    <h2>Let’s Start the Game!</h2>
+                    <p>Answer all 5 questions correctly to clear the stage!</p>
+                </div>
+
+                <h2 id="question-text">
+                </h2>
+
+                <p id="question-clue">
+                </p>
+
+
+                <div id="answer-buttons">
+
+                    <button class="answer">
+                    </button>
+
+                    <button class="answer">
+                    </button>
+
+                    <button class="answer">
+                    </button>
+
+                    <button class="answer">
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Failure Message -->
+
+            <div id="failure-box">
+
+                <h2 id="failure-title">
+                    Oh no!
+                </h2>
+
+                <p id="failure-message">
+                    The tractor cannot move!
+                </p>
+
+
+                <button id="retry-button">
+                    Retry
+                </button>
+
+            </div>
+
+
+
+            <!-- Success Message -->
+
+            <div id="success-box">
+
+                <h2>
+                    Great Job!
+                </h2>
+
+                <div class="food-card-layout">
+                    <img id="food-card-image" alt="Correct food card">
+
+                    <div class="food-facts">
+                        <h3 id="food-card-name"></h3>
+                        <p><strong>Origin:</strong> <span id="food-origin"></span></p>
+                        <p><strong>Grows:</strong> <span id="food-growing-place"></span></p>
+                    </div>
+                </div>
+
+                <button id="next-button">
+                    NEXT
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- Finish Screen -->
+
+    <section id="finish-screen" class="screen">
+
+        <div class="finish-party finish-party-left" aria-hidden="true">
+            <img class="party-plant party-plant-one" src="assets/scenery/Plant1.png" alt="">
+            <img class="party-animal party-cow" src="assets/scenery/Cow.png" alt="">
+            <img class="party-animal party-chicken" src="assets/scenery/Chicken.png" alt="">
+            <img class="party-tractor party-tractor-spring" src="assets/tractors/spring-drive.png" alt="">
+            <img class="party-tractor party-tractor-summer" src="assets/tractors/summer-drive.png" alt="">
+        </div>
+
+        <div class="finish-party finish-party-right" aria-hidden="true">
+            <img class="party-yummie" src="assets/yummie.png" alt="">
+            <img class="party-plant party-plant-two" src="assets/scenery/Plant3.png" alt="">
+            <img class="party-animal party-sheep" src="assets/scenery/Sheep.png" alt="">
+            <img class="party-tractor party-tractor-autumn" src="assets/tractors/autumn-drive.png" alt="">
+            <img class="party-tractor party-tractor-winter" src="assets/tractors/winter-drive.png" alt="">
+        </div>
+
+
+        <div class="finish-container">
+
+            <div class="finish-confetti" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span>
+            </div>
+
+            <div class="finish-starburst" aria-hidden="true">
+                <span>★</span>
+            </div>
+
+
+            <div class="finish-tractor-medal">
+                <img id="finish-tractor" src="assets/tractors/spring-drive.png" alt="Your winning tractor">
+            </div>
+
+
+            <h1 id="finish-title">
+                YOU DID IT!
+            </h1>
+
+
+            <p id="finish-praise" class="finish-praise">
+                Amazing work — you are a seasonal food superstar!
+            </p>
+
+            <div class="finish-achievement" role="status">
+                <span class="finish-ribbon">ADVENTURE COMPLETE</span>
+                <strong id="finish-summary">You finished the seasonal journey!</strong>
+                <span id="finish-score">5 questions completed</span>
+            </div>
+
+
+            <p>
+                Would you like to try another season?
+            </p>
+
+
+            <button id="restart-button">
+                Play Again
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- JavaScript Files -->
+
+   <script src="questions/spring.js"></script>
+<script src="questions/summer.js"></script>
+<script src="questions/autumn.js"></script>
+<script src="questions/winter.js"></script>
+<script src="questions.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
